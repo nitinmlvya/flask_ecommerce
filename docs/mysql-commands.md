@@ -224,6 +224,17 @@ ALTER TABLE users ADD age VARCHAR(3);
 ALTER TABLE users MODIFY COLUMN age INT(3);
 ```
 
+
+## Add column after(position)
+```sql
+ALTER TABLE users ADD age1 after first_name;
+```
+
+## Drop Column
+```sql
+ALTER TABLE users drop COLUMN age;
+```
+
 ## Order By (Sort)
 
 ```sql
