@@ -398,7 +398,7 @@ SELECT MAX(age) FROM users;
 SELECT MIN(age) FROM users;
 SELECT SUM(age) FROM users;
 SELECT UCASE(first_name), LCASE(last_name) FROM users;
-
+select max(age) from users where age < (select max(age) from users); # For second highest value
 ```
 
 ## Group By
