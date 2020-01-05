@@ -1,0 +1,28 @@
+Install Python 3.6.2
+
+Set Python Path into environment variables. AppData/..../Python & AppData/.../Scripts
+
+Open CMD:
+Check python version using typing "python" and Enter. It should be 3.6.2
+
+Install virtual environment
+pip install virtualenv [ignore, if already installed]
+
+Goto the current project and Create virtual environment
+virtualenv --python=python venv       [where venv is name of the virtual environment]
+
+Activate the virtual environment:
+venv\Scripts\activate
+
+It displays (venv) over your command prompt.
+
+Install all the python packages one-by-one OR using requirements.txt
+
+One-by-One
+pip install <python_package_name>
+OR
+using requirments.txt
+pip install -r requirements.txt
+
+Execute your flask project:
+python app.py
