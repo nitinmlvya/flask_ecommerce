@@ -1,0 +1,36 @@
+
+
+Step 1:
+Open flask_ecommerce/__init__.py
+Import "from flask import Flask" and then create a function "create_app".
+Define a variable "app" and assign "Flask(__name__)". It creates flask application object. It must have "return app" in the same function(create_app)
+
+Step 2:
+app.py is the main file of the project that exectues flask project.
+Import the "create_app" function from "flask/ecommerce/__init__.py" into "app.py". Create a variable app and assign "create_app()". At the end of the file, define app.run() to execute the project.
+
+Step 3:
+Open your views.py file to create blueprint & routes. It also have business logic.
+Import inbuilt classes such as Blueprint, jsonify, request from flask.
+Initialize the blueprint object named as "mod". It is optional to define "url_prefix".
+Blueprint names must be unique for different apps.
+Every URL/Rest api must have a decorater"@mod.route" and create a function for the same.
+Method names are "POST, PUT, DELETE, GET".
+It must return "jsonify" response or "string" response.
+
+Step 4:
+Register the created blueprint into "create_app" function of the "flask_ecommerce/__init__.py".
+
+---- config.py is optional ------
+
+(For Database connectivity)
+
+Step 5: 
+Create variable "db" object of "SQLALCHEMY" into file "flask_ecommerce/__init__.py".
+Now, assign or intialize the "db" object with flask application named as "app" object into "create_app" function.
+
+Step 6:
+Open/Create a file "models.py" and create a table class(User) and its fields/columns/class variables.
+
+Step 7:
+Open the "views.py" file and import "db" object of SQLALCHEMY and write your SQL queries/code for the routes/api. 
