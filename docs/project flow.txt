@@ -21,16 +21,25 @@ It must return "jsonify" response or "string" response.
 Step 4:
 Register the created blueprint into "create_app" function of the "flask_ecommerce/__init__.py".
 
----- config.py is optional ------
+
+(For Configuration)
+
+Step 5:
+Create a "config.py" file for development and production configuration/servers.
+It must contains "SQLALCHEMY_DATABASE_URI" and "SECRET_KEY".
+
+Step 6:
+Use the configuration name into "create_app" function. It will be get stored into your configuration of the flask application which is "app" variable.
+
 
 (For Database connectivity)
 
-Step 5: 
+Step 7: 
 Create variable "db" object of "SQLALCHEMY" into file "flask_ecommerce/__init__.py".
 Now, assign or intialize the "db" object with flask application named as "app" object into "create_app" function.
 
-Step 6:
+Step 8:
 Open/Create a file "models.py" and create a table class(User) and its fields/columns/class variables.
 
-Step 7:
+Step 9:
 Open the "views.py" file and import "db" object of SQLALCHEMY and write your SQL queries/code for the routes/api. 
