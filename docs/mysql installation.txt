@@ -1,0 +1,10 @@
+Install MySQL and MySQL Workbench:
+
+
+For Windows:
+
+Dependency = Install Microsoft Visual C++ and Build tools
+
+Install MYSQL using MYSQL installer.
+
+Install MYSQL workbench.
