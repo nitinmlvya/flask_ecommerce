@@ -1,4 +1,4 @@
-CREATE DATABASE `flask_db` DEFAULT CHARACTER SET utf8 ;
+CREATE DATABASE `flask_db`;
 
 CREATE TABLE `flask_db`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,

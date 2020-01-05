@@ -7,7 +7,11 @@ mod = Blueprint('users', __name__, url_prefix='/users')
 
 @mod.route('/', methods=['GET'])
 def fetch_users():
-    users = User.query.all()
+    users = User.query.all() # select * from user;
+    # # Without representation
+    # print(users[0].username)
+    # print(users[0].email)
+    # With represtation
     response = [user.__repr__() for user in users]
     return jsonify(response)
 
@@ -56,3 +60,13 @@ def create_user():
     db.session.add(user)
     db.session.commit()
     return 'User has been created'
+
+
+@mod.route('/update_user/<user_id>', methods=['PUT'])
+def update_user(user_id):
+    request_data = request.get_json()
+    user = User.query.get(int(user_id))
+    user.email = request_data['email']
+    db.session.commit()
+    return 'User has been updated'
+
