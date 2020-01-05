@@ -1,0 +1,18 @@
+Flask project Structure. It is created using App-Based structure.
+
+flask_ecommerce = It is the project name.
+
+flask_ecommerce/docs = It is usually used for document files.
+flask_ecommerce/flask_ecommerce = It is the actual flask application. You can rename it with any.
+flask_ecommerce/sql = It is used to store SQL queries.
+flask_ecommerce/venv = It is the virtual environment folder.
+flask_ecommerce/app.py = It is the main file of the flask project.
+flask_ecommerce/config.py = It is used to define various configuration of the servers.
+flask_ecommerce/README.md = It is for instructions.
+flask_ecommerce/requirements.txt = It contains all the python packages names along with their versions.
+flask_ecommerce/flask_ecommerce/__init__.py = It contains the settings of the project.
+flask_ecommerce/flask_ecommerce/<app_name> = It is your app name. We can defined multiple app names such as users, products etc.
+flask_ecommerce/flask_ecommerce/<app_name>/__init__.py = It is used for package creation.
+flask_ecommerce/flask_ecommerce/<app_name>/models.py = It is used to create ORM of the tables.
+flask_ecommerce/flask_ecommerce/<app_name>/views.py = It contains blueprint, routing of every urls and business logic.
+ 
