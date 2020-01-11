@@ -49,14 +49,20 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [
 							{
-								"key": "Content-Type",
+								"key": "Authorization",
 								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text",
-								"disabled": true
+								"value": "Bearer eyJpZCI6MX0.wA_CSwoMcYuWtoVCwJil9XVqc2I",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "Bearer eyJpZCI6MX0.wA_CSwoMcYuWtoVCwJil9XVqc2I"
 							}
 						],
 						"body": {
@@ -202,72 +208,195 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Add user details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"xyz1\",\n\t\"user_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/users/add_user_detail",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"add_user_detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"city\": \"pune\",\n\t\"user_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/users/add_address",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"add_address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all user addresses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/users/fetch_addressess",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"fetch_addressess"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all user details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/users/fetch_user_detail",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"fetch_user_detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login ",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"xyz1\",\n\t\"password\": \"xyz1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "List all the users",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:5000/users",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"users"
-					]
-				},
-				"description": "\t"
-			},
-			"response": []
-		},
-		{
-			"name": "Get single user detail",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:5000/users/2",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"users",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get single user detail - Permalink default",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:5000/users/get_user?user_id=2",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"users",
-						"get_user"
-					],
-					"query": [
-						{
-							"key": "user_id",
-							"value": "2"
-						}
-					]
-				}
-			},
-			"response": []
 		},
 		{
 			"name": "Create user using JSON request",
