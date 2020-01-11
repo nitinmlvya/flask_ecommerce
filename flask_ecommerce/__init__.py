@@ -1,10 +1,12 @@
-from flask import Flask
+from flask import Flask, g
 from flask_sqlalchemy import SQLAlchemy
 from config import app_config
+from flask_httpauth import HTTPTokenAuth
 
 # db variable initialization
 db = SQLAlchemy()
-
+# Token based auth
+auth = HTTPTokenAuth('Bearer')
 
 def create_app(config_name):
     app = Flask(__name__)

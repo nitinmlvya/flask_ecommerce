@@ -8,3 +8,15 @@ CREATE TABLE `flask_db`.`user` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `usercol_UNIQUE` (`username` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC));
+
+CREATE TABLE `flask_db`.`user_details` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(64) NULL,
+  `user_id` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `id_idx` (`user_id` ASC),
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `flask_db`.`user` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
