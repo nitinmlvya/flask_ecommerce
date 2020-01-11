@@ -22,6 +22,7 @@ def verify_auth_token(token):
 @auth.login_required
 def fetch_users():
     # users = User.query.with_entities(User.username, UserDetails.name).all()  # select * from user;
+    # print(users), users[0].username)  # access using column name
     users = User.query.all()  # select * from user;
     # # Without representation
     # print(users[0].username)
