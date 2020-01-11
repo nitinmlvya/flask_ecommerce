@@ -1,6 +1,6 @@
 """
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/
-"backref" is a simple way to also declare a new property on the Address class.
+"backref" is a simple way to also declare a new property on the User class.
 You can then also use my_address.person to get to the person at that address.
 
 "lazy" defines when SQLAlchemy will load the data from the database:
@@ -32,9 +32,11 @@ class User(db.Model):
     username = db.Column('username', db.String(64), index=True, unique=True)
     email = db.Column('email', db.String(120), unique=True)
     password = db.Column('password', db.String(128))
-    user_detail = db.relationship('UserDetails', backref='user', lazy=True, uselist=False, cascade="all,delete",
+    user_detail = db.relationship('UserDetails', backref='user', lazy='select',
+                                  uselist=False, cascade="all,delete",
                                   ) # one-to-one relationship
-    addresses = db.relationship('Address', secondary=users_addresses, backref='user', lazy='joined' #use 'dynamic' and check the difference
+    addresses = db.relationship('Address', secondary=users_addresses, backref='user',
+                                lazy='joined' #use 'dynamic' and check the difference
                                 , cascade="all,delete"
                                  ) # Many-to-many Relationship
 
@@ -72,7 +74,6 @@ class Address(db.Model):
     __tablename__ = 'address'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement = True)
     city = db.Column('city', db.String(64), nullable=True)
-    user_id = db.Column('user_id', db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def to_representation(self):
         return {

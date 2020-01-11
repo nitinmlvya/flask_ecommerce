@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, request, g
 from flask import current_app as app
 from itsdangerous import URLSafeSerializer
-
 from flask_ecommerce import db, auth
 from flask_ecommerce.users.models import User, UserDetails, Address
 
@@ -22,6 +21,7 @@ def verify_auth_token(token):
 @mod.route('/', methods=['GET'])
 @auth.login_required
 def fetch_users():
+    # users = User.query.with_entities(User.username, UserDetails.name).all()  # select * from user;
     users = User.query.all()  # select * from user;
     # # Without representation
     # print(users[0].username)
@@ -113,8 +113,7 @@ def add_address():
     request_data = request.get_json()
     user_id = request_data['user_id']
     address = Address(
-        city=request_data['city'],
-        user_id=user_id
+        city=request_data['city']
     )
     user = User.query.get(user_id)
     user.addresses.append(address)  # Add to association table
