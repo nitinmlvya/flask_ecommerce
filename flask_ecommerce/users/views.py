@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request, g
 from flask import current_app as app
+from flask import session
 from itsdangerous import URLSafeSerializer
 from flask_ecommerce import db, auth
 from flask_ecommerce.users.models import User, UserDetails, Address
@@ -18,7 +19,7 @@ def verify_auth_token(token):
     g.user = User.query.get(data['id'])
     return True
 
-@mod.route('/', methods=['GET'])
+@mod.route('', methods=['GET'])
 @auth.login_required
 def fetch_users():
     # users = User.query.with_entities(User.username, UserDetails.name).all()  # select * from user;
@@ -29,7 +30,7 @@ def fetch_users():
     # print(users[0].email)
     # With represtation
     response = [user.to_representation() for user in users]
-    return jsonify(response)
+    return jsonify(response), 200
 
 
 @mod.route('/get_user/<user_id>', methods=['GET'])
@@ -47,7 +48,7 @@ def fetch_user_by_id(user_id):
         }
         break
     """
-    return jsonify(response)
+    return jsonify(response), 200
 
 
 @mod.route('/get_user', methods=['GET'])
@@ -78,7 +79,7 @@ def create_user():
     )
     db.session.add(user)
     db.session.commit()
-    return 'User has been created'
+    return 'User has been created', 201 # 201 is the status code.
 
 
 @mod.route('/update_user/<user_id>', methods=['PUT'])
@@ -133,11 +134,43 @@ def fetch_addressess():
 
 @mod.route('/login', methods=['POST'])
 def login():
-    print('___login')
     request_data = request.get_json()
     username = request_data['username']
     password = request_data['password']
     user = User.query.filter(User.username == username and User.password == password).first()
     token = user.generate_auth_token()
     reponse = token
-    return jsonify(reponse)
+    return jsonify(reponse), 200
+
+
+@mod.route('/set_cookie', methods=['POST'])
+def set_cookie():
+    request_data = request.get_json()
+    cookie_value = request_data['cookie_value']
+    response = jsonify({"msg": "Cookie value has been set."})
+    response.set_cookie('my_cookie', cookie_value)
+    return response
+
+
+@mod.route('/get_cookie', methods=['GET'])
+def get_cookie():
+    cookie_value = request.cookies.get('my_cookie')
+    return jsonify({"cookie": cookie_value})
+
+
+@mod.route('/handle_session', methods=['POST', 'GET'])
+def handle_session():
+    if request.method == 'POST':
+        request_data = request.get_json()
+        session_value = request_data['session_value']
+        session['my_session'] = session_value
+        return jsonify({"msg": "Session value has been set."})
+    elif request.method == 'GET':
+        session_value = session.get('my_session')
+        return jsonify({"session": session_value})
+
+@mod.route('/upload_file', methods=['POST'])
+def upload_file():
+    f = request.files['my_file']
+    f.save('docs/' + f.filename)
+    return 'File Uploaded.'

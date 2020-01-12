@@ -21,6 +21,16 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_ECHO = True
 
 
+class TestingConfig(Config):
+    """
+    Testing configurations
+    """
+    DEBUG = True
+    SQLALCHEMY_ECHO = True
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:root@localhost/flask_test_db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
 class ProductionConfig(Config):
     """
     Production configurations
@@ -29,5 +39,6 @@ class ProductionConfig(Config):
 
 app_config = {
     'development': DevelopmentConfig,
+    'testing': TestingConfig,
     'production': ProductionConfig
 }

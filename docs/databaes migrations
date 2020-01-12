@@ -1,0 +1,18 @@
+Alembic is a lightweight database migration tool for SQLAlchemy.
+Flask-Migrate is an extension that configures Alembic in the proper
+way to work with your Flask and Flask-SQLAlchemy application.
+
+Bind "Migrate" to app and db
+Migrate(app, db)
+
+Create migrations folder and configuration
+flask db init
+
+generate an initial migration
+flask db migrate
+
+apply the migration to the database
+flask db upgrade
+
+
+flask db --help

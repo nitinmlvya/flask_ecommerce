@@ -1,0 +1,8 @@
+Run unit test
+python -m flask_ecommerce.users.test
+
+test.py                           - run default set of tests
+test.py MyTestSuite               - run suite 'MyTestSuite'
+test.py MyTestCase.testSomething  - run MyTestCase.testSomething
+test.py MyTestCase                - run all 'test*' test methods
+                                   in MyTestCase
